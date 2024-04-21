@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
-from ..defaults import WINDOW_HEIGHT, WINDOW_WIDTH, WIDTH_PARTITIONING_PRECENT, HEIGHT_PARTITIONING_PRECENT
+from ..defaults import WINDOW_HEIGHT, WINDOW_WIDTH, WIDTH_PARTITIONING_PRECENT, HEIGHT_PARTITIONING_PRECENT, SKY_BLUE_BACKGROUND
 from ..widgets.board import Board
 from ..helpers.shared import Shared
 
@@ -14,7 +14,7 @@ class ActiveBoard(QWidget):
         self.setLayout(self.boards_layout)
         self.boards_layout.addWidget(self.board)
         Shared.BOARD_REFLECTION = self.board.board_container
-        self.setStyleSheet("QWidget { background-color: skyblue;}")  # Using CSS-like properties
+        self.setStyleSheet(SKY_BLUE_BACKGROUND)
         
     
         

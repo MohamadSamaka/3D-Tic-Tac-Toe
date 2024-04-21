@@ -18,13 +18,25 @@ class GUI(QMainWindow):
 
     def initaite_window(self):
         self.setWindowTitle(GUI.TITLE)
-        self.setFixedSize(QSize(WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.setFixedSize(QSize(600, 600))
         
-    def create_game(self):
+    def create_game(self): #creates the game , it's called when user inserts names and clicks start
         self.board = GameCore(self)
         self.setCentralWidget(self.board)
         return self.board
     
-    
+    def resize_to_default(self):
+        self.setFixedSize(QSize(WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.center_window()
+        
+    def center_window(self):
+        # Get the screen resolution from the app's primary screen
+        screen = QApplication.primaryScreen().geometry()
+        # Calculate the center point
+        x = (screen.width() - self.width()) // 2
+        y = (screen.height() - self.height()) // 2
+        # Move the window to the center
+        self.move(x, y)
+        
     def exit_app(self):
         QApplication.quit()

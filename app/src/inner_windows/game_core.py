@@ -9,6 +9,7 @@ from math import floor
 class GameCore(QWidget):
     def __init__(self, parent):
         super().__init__(parent)  # Initialize the QMainWindow base class
+        self.resize_main_app_window()
         self.configure()
         
     def configure(self):
@@ -49,3 +50,6 @@ class GameCore(QWidget):
     
     def start_new_game(self):
         Shared.reset_variables()
+        
+    def resize_main_app_window(self):
+        Shared.MAIN_APP_WINDOW.resize_to_default()

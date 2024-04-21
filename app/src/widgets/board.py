@@ -14,21 +14,20 @@ class Board(QWidget):
     def __init__(self, parent, w=WIDTH_PARTITIONING_PRECENT, h=HEIGHT_PARTITIONING_PRECENT, disable_squares=False):
         super().__init__(parent)
         self.disable_squares = disable_squares
-        self.configure(w, h)
+        self._width = w
+        self._height = h
+        self.configure()
         self.generate_board()
         
         
-    def configure(self, w, h):
+    def configure(self):
         self.id = Board.ID
         self.setObjectName(f"{self.id}")
         Board.ID += 1
-        self._width = w
-        self._height = h
-        self.board_container = QGridLayout(self)
+        
         self.setFixedWidth(self._width)
         self.setFixedHeight(self._height)
-        self.board_container.setSpacing(0)
-        self.board_container.setContentsMargins(0,0,0,0)
+        
     
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -40,13 +39,17 @@ class Board(QWidget):
             self.reflect_simplified_board()
         
     def generate_board(self):
+        self.board_container = QGridLayout(self)
+        self.board_container.setSpacing(0)
+        self.board_container.setContentsMargins(0,0,0,0)
+        
         for row in range(3):
             for col in range(3):
                 btn = BoardSquare(self._width ,self._height, self.disable_squares)
                 self.board_container.addWidget(btn, row, col)
                 Shared.SIMPLIFIED_BOARDS[self.id] = [[-1, -1, -1] for _ in range(GAME_TYPE)]
                 
-    def reflect_simplified_board(self):
+    def reflect_simplified_board(self): #mimicking changes on active board to the choosen board
         simplified_clicked_board = Shared.SIMPLIFIED_BOARDS[self.id]
         for row in range(3):
             for col in range(3):

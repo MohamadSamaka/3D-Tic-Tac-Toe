@@ -16,6 +16,7 @@ class StartGameButton(QPushButton):
         
     def start_game(self):
         self.set_player_name()
+        # Shared.PLAYERS_SCORE[0] =
         game_core = self.create_game_func()
         game_core.show()
         main_game_window = self.parentWidget()

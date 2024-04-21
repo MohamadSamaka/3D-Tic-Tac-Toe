@@ -43,7 +43,6 @@ class TimerLabel(QLabel):
         else:
             Shared.CURRENT_TURN = not Shared.CURRENT_TURN
             self.pass_turn_func()
-            # self.timer.stop()
             
     def update_progress_bar_color(self, percent=100):
         palette = self.palette()

@@ -9,7 +9,6 @@ class Warning(QDialog):
 
     def configure(self, title, message):
         self.setWindowTitle(title)
-        # self.setGeometry(300, 300, 200, 100)
         self.setFixedSize(300, 100)  # Set the fixed size of the dialog
         layout = QHBoxLayout()
         
